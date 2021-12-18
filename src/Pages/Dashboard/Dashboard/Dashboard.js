@@ -7,16 +7,22 @@ import {
 } from "react-router-dom";
 import useAuth from '../../../hooks/useAuth';
 const Dashboard = () => {
-    const {logout} = useAuth()
+    const {logout, admin} = useAuth()
     return (
       <div className="">
-          <h1 className="text-center text-bg fw-bolder py-2">
+         {
+             admin ?  <h1 className="text-center text-bg fw-bolder py-2">
              CODEPICK JS ADMIN PANEL
+          </h1> :  <h1 className="text-center text-bg fw-bolder py-2">
+            Welcome To CodePick JS
           </h1>
+         }
      <div className="d-none d-md-block">
      <div className="row mx-2">
             <div className="col-lg-2 border-2 border-end h-100">
-                <div className=" ">
+                {
+                    admin && <div>
+                        <div className=" ">
                     <Link className="text-decoration-none dashboard-menu p-2 d-block fs-5" to="/dashboard"><i className="fas fa-th-large"></i> Dashboard</Link>
                 </div>
                 <div className=" ">
@@ -41,18 +47,24 @@ const Dashboard = () => {
                 <div className=" ">
                     <Link className="text-decoration-none dashboard-menu p-2 d-block fs-5" to="/dashboard/manageprojects"><i className="fas fa-pager"></i> M. Projects</Link>
                 </div>
+                    </div>
+                }
                 <div className=" ">
                     <Link className="text-decoration-none dashboard-menu p-2 d-block fs-5" to="/dashboard/orders"><i class="fas fa-shopping-cart"></i> MyOrders</Link>
                 </div>
-                <div className=" ">
-                    <Link className="text-decoration-none dashboard-menu p-2 d-block fs-5" to="/dashboard/manageallorderes"><i class="fas fa-shopping-cart"></i> M. Orders</Link>
-                </div>
+               {
+                   admin &&  <div className=" ">
+                   <Link className="text-decoration-none dashboard-menu p-2 d-block fs-5" to="/dashboard/manageallorderes"><i class="fas fa-shopping-cart"></i> M. Orders</Link>
+               </div>
+               }
                 <div className=" ">
                     <Link className="text-decoration-none dashboard-menu p-2 d-block fs-5" to="/dashboard/addreview"><i class="fas fa-star"></i> Add Review</Link>
                 </div>
-                <div className=" ">
+                {
+                    admin && <div className=" ">
                     <Link className="text-decoration-none dashboard-menu p-2 d-block fs-5" to="/dashboard/managereviews"><i className="fas fa-star"></i> Reviews</Link>
                 </div>
+                }
                 <div className=" ">
                     <Link className="text-decoration-none dashboard-menu p-2 d-block fs-5" to="/home"><i className="fas fa-home"></i> Home</Link>
                 </div>

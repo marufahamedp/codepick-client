@@ -30,6 +30,7 @@ import AddBlogs from './Pages/Dashboard/AddBlogs/AddBlogs';
 import BlogsDetails from './Pages/Shared/BlogsDetails/BlogsDetails';
 import Orders from './Pages/Dashboard/Orders/Orders/Orders';
 import ManageAllOrders from './Pages/Dashboard/ManageAllOrders/ManageAllOrders/ManageAllOrders';
+import AdminRoute from './AdminRoute/AdminRoute';
 
 function App() {
   return (
@@ -65,17 +66,17 @@ function App() {
               <Dashboard />
             </PrivateRoute>}>
             <Route path="/dashboard" element={<DashboardHome />} /> 
-            <Route path="/dashboard/manageprojects" element={<ManageProjects />} /> 
-            <Route path="/dashboard/manageusers" element={<ManageUsers />} />
-            <Route path="/dashboard/managereviews" element={<ManageReviews />} />
-            <Route path="/dashboard/addprojects" element={<AddProjects />} />
-            <Route path="/dashboard/manageteam" element={<ManageTeam />} />
-            <Route path="/dashboard/manageservices" element={<ManageServices />} />
-            <Route path="/dashboard/addservice" element={<AddService />} />
+            <Route path="/dashboard/manageprojects" element={<AdminRoute><ManageProjects /></AdminRoute>} /> 
+            <Route path="/dashboard/manageusers" element={ <AdminRoute><ManageUsers /></AdminRoute>} />
+            <Route path="/dashboard/managereviews" element={<AdminRoute><ManageReviews /></AdminRoute>} />
+            <Route path="/dashboard/addprojects" element={<AdminRoute><AddProjects /></AdminRoute>} />
+            <Route path="/dashboard/manageteam" element={<AdminRoute><ManageTeam /></AdminRoute>} />
+            <Route path="/dashboard/manageservices" element={<AdminRoute><ManageServices /></AdminRoute>} />
+            <Route path="/dashboard/addservice" element={<AdminRoute><AddService /></AdminRoute>} />
             <Route path="/dashboard/addreview" element={<AddReview />} />
-            <Route path="/dashboard/addblog" element={<AddBlogs />} />
+            <Route path="/dashboard/addblog" element={<AdminRoute><AddBlogs /></AdminRoute>} />
             <Route path="/dashboard/orders" element={<Orders />} />
-            <Route path="/dashboard/manageallorderes" element={<ManageAllOrders />} />
+            <Route path="/dashboard/manageallorderes" element={<AdminRoute><ManageAllOrders /></AdminRoute>} />
             </Route>
           </Routes>
         </Router>
